@@ -10,7 +10,12 @@ app.use(json())
 app.use(urlencoded({ extended: true }))
 //app.use(morgan("dev"))
 
-app.get("/data", (req, res) => {
+const log = (req, res, next) => {
+    console.log("logging")
+    next()
+}
+
+app.get("/data", log, (req, res) => {
     res.send({ message: "hey poopy" })
 })
 

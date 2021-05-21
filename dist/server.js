@@ -23,9 +23,7 @@ app.get("/", function (req, res) {
 });
 app.post("/", function (req, res) {
   console.log(req.body);
-  req.send({
-    message: "ok"
-  });
+  res.send(req.body);
 });
 
 var start = function start() {

@@ -2,6 +2,7 @@ import express from "express"
 import { json, urlencoded } from "body-parser"
 
 export const app = express()
+export const router = express.Router()
 
 //app.disable("x-powered-by")
 
@@ -9,6 +10,12 @@ export const app = express()
 app.use(json())
 app.use(urlencoded({ extended: true }))
 //app.use(morgan("dev"))
+
+router.get("/me", (req, res) => {
+    res.send({ me: "hellow" })
+})
+
+app.use("/api", router)
 
 const log = (req, res, next) => {
     console.log("logging")
